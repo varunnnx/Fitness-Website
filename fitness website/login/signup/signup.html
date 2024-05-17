@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>LOGIN PAGE</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login">
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" placeholder="Username">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" placeholder="email">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input type="password" class="login__input" placeholder="Password">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input type="password" class="login__input" placeholder="Confirm-Password">
+				</div>
+				<button class="button login__submit">
+					<span class="button__text">Sign Up Now</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>	
+					
+			</form>
+			<div class="social-login">
+				<h3>sign in via</h3>
+				<div class="social-icons">
+					<a href="#" class="social-login__icon fab fa-instagram"></a>
+					<a href="#" class="social-login__icon fab fa-facebook"></a>
+					<a href="#" class="social-login__icon fab fa-twitter"></a>
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+<script>
+	// Selecting the necessary HTML elements
+const username = document.querySelector('.login__input[placeholder="Username"]');
+const email = document.querySelector('.login__input[placeholder="email"]');
+const password = document.querySelector('.login__input[placeholder="Password"]');
+const confirmPassword = document.querySelector('.login__input[placeholder="Confirm-Password"]');
+const form = document.querySelector('.login');
+const submitButton = document.querySelector('.login__submit');
+
+// Regular expressions for input validation
+const usernameRegex = /^[a-zA-Z]+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+-=])[A-Za-z\d!@#$%^&*()_+-=]{8,}$/;
+
+// Adding event listener to the form submit button
+submitButton.addEventListener('click', (event) => {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+  
+  // Perform validation on the form input
+  if (username.value.trim() === '') {
+    alert('Please enter a username.');
+    return;
+  }
+  
+  if (!usernameRegex.test(username.value.trim())) {
+    alert('Username must contain only letters.');
+    return;
+  }
+  
+  if (email.value.trim() === '') {
+    alert('Please enter an email.');
+    return;
+  }
+  
+  if (!emailRegex.test(email.value.trim())) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  
+  if (password.value.trim() === '') {
+    alert('Please enter a password.');
+    return;
+  }
+  
+  if (password.value.trim().length < 8 || !passwordRegex.test(password.value.trim())) {
+    alert('Password must contain at least 8 characters, including at least one uppercase letter, one numeric character, and one special character.');
+    return;
+  }
+  
+  if (confirmPassword.value.trim() === '') {
+    alert('Please confirm your password.');
+    return;
+  }
+  
+  if (password.value !== confirmPassword.value) {
+    alert('Passwords do not match.');
+    return;
+  }
+  
+  // If all input is valid, submit the form
+  form.submit();
+});
+
+
+</script>
+
+
+</body>
+</html>
+

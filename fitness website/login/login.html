@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>LOGIN PAGE</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login">
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" placeholder="User name">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input type="password" class="login__input" placeholder="Password">
+				</div>
+				<button class="button login__submit">
+					<span class="button__text">Log In Now</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>	
+				<div class="signup">
+					<p>Not a member? <a href="signup\signup.html">Sign up</a></p>
+				  </div>	
+			</form>
+			<div class="social-login">
+				<h3>log in via</h3>
+				<div class="social-icons">
+					<a href="#" class="social-login__icon fab fa-instagram"></a>
+					<a href="#" class="social-login__icon fab fa-facebook"></a>
+					<a href="#" class="social-login__icon fab fa-twitter"></a>
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+
+<script>
+	// Get references to the form and input fields
+var loginForm = document.querySelector('.login');
+var usernameInput = document.querySelector('.login__input[type="text"]');
+var passwordInput = document.querySelector('.login__input[type="password"]');
+
+// Add event listener to the form submission
+loginForm.addEventListener('submit', function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+  
+  // Validate the form inputs
+  if (validateUsername(usernameInput.value) && validatePassword(passwordInput.value)) {
+    // If the inputs are valid, log the form data to the console
+    console.log("Username: " + usernameInput.value);
+    console.log("Password: " + passwordInput.value);
+    
+    // Clear the form inputs
+    usernameInput.value = '';
+    passwordInput.value = '';
+  } else {
+    // If the inputs are not valid, show an error message
+    alert("Please enter a valid username and password.");
+  }
+});
+
+function validateUsername(username) {
+  // Regular expression to match only alphabetical characters
+  var alphaExp = /^[a-zA-Z]+$/;
+  
+  if (username.match(alphaExp)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validatePassword(password) {
+  // Regular expressions to match at least one uppercase, one numeric, and one special character
+  var uppercaseExp = /[A-Z]+/;
+  var numericExp = /\d+/;
+  var specialExp = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+  
+  if (password.match(uppercaseExp) && password.match(numericExp) && password.match(specialExp)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+</script>
+
+</body>
+</html>
+
